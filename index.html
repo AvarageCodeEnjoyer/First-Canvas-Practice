@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./StyleSheet.css" rel="StyleSheet">
+  <script defer src = "./app.js"></script>
+  <title>Canvas</title>
+</head>
+<body>
+  <canvas id="myCanvas" width="800" height="800"></canvas>
+
+  <script>
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+    
+    // Make Outline
+    ctx.beginPath()
+    ctx.arc(400, 400, 390, 0, 2 * Math.PI)
+    ctx.lineWidth = 10
+    ctx.strokeStyle = "black";
+    ctx.stroke()
+
+    // Make Eyes
+    ctx.beginPath()
+    ctx.arc(200, 200, 50, 0, 2 * Math.PI)
+    ctx.arc(600, 200, 50, 0, 2 * Math.PI)
+    ctx.fillStyle = 'red'
+    ctx.fill()
+
+    // Make Smile
+    ctx.beginPath()
+    ctx.fillStyle = '#000000'
+    ctx.arc(400, 400, 250, 0, Math.PI)
+    ctx.fill()
+
+    // Make Teeth
+    ctx.beginPath()
+    ctx.fillStyle = '#ffffff'
+    ctx.arc(400, 420, 200, 0, Math.PI)
+    ctx.fill()
+
+    ctx.beginPath()
+    ctx.strokeStyle = '#000000'
+    ctx.lineWidth = 2
+    ctx.moveTo(200, 500)
+    ctx.lineTo(600, 500)
+    ctx.stroke()
+
+    const startX = 250
+    const startY = 420
+    const space = 80
+    const height = 200
+    const teethNum = 5
+
+    for(let i = 0; i < teethNum; i++){
+      let x = startX + i * space 
+      if(i == 0 || i == 4){
+        ctx.strokeRect(x, startY, 1, 150)
+      }
+      else{
+        ctx.strokeRect(x, startY, 1, height)
+      }
+    }
+
+    // Make Eyebrows
+    ctx.beginPath()
+    ctx.strokeStyle = '#000000'
+    ctx.lineWidth = 30
+    ctx.moveTo(100, 100)
+    ctx.lineTo(300, 200)
+
+    ctx.moveTo(700, 100)
+    ctx.lineTo(500, 200)
+
+    ctx.stroke()
+  </script> 
+</body>
+</html>
